@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../task2/">
+        <link rel="prev" href="../lab4/">
       
-      
-        <link rel="next" href="../task4/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>Задание 3 - Alisa Liberman</title>
+        <title>Литкоды - Alisa Liberman</title>
       
     
     
@@ -70,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#3" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Задание 3
+              Литкоды
             
           </span>
         </div>
@@ -219,7 +217,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../task1/" class="md-nav__link">
+      <a href="../../lab1/task1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -239,7 +237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../task2/" class="md-nav__link">
+      <a href="../../lab1/task2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -256,19 +254,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../lab1/task3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -277,7 +266,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -289,7 +277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../task4/" class="md-nav__link">
+      <a href="../../lab1/task4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -309,7 +297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../task5/" class="md-nav__link">
+      <a href="../../lab1/task5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -389,7 +377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/lab4/" class="md-nav__link">
+      <a href="../lab4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -406,10 +394,19 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../lab4/leetcode/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -418,6 +415,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -455,66 +453,21 @@
                   
 
 
-<h1 id="3">Задание 3</h1>
-<p>Реализовать серверную часть приложения. Клиент подключается к серверу, и в ответ получает HTTP-сообщение, содержащее HTML-страницу, которая сервер подгружает из файла index.html.</p>
-<p>Требования:
-Обязательно использовать библиотеку socket.</p>
-<p>Листинг кода для Server: </p>
-<pre><code>from socket import socket, AF_INET, SOCK_STREAM
-
-
-def encode_args(*args) -&gt; bytes:
-    return (''.join(args) + '\n\n').encode('utf-8')
-
-
-def html_server(socket_address: tuple[str, int] = ('localhost', 1234)) -&gt; None:
-
-    server = socket(AF_INET, SOCK_STREAM)
-    server.bind(socket_address)
-    server.listen(5)
-
-    print(f'Started listening on {socket_address}')
-    print(f'to see the result, go to http://{socket_address[0]}:{socket_address[1]}')
-
-    standard_headers = [
-        'HTTP/1.1 200 OK\r\n',
-        'Content-Type: text/html; charset=utf-8\r\n',
-        '\r\n'
-    ]
-
-    while True:
-        try:
-            with open('index.html', 'r') as f:
-                html = f.read()
-            client_socket, client_address = server.accept()
-            print(f'Connected from {client_address}')
-            client_socket.recv(1024)
-            client_socket.send(encode_args(*standard_headers, *html))
-        except KeyboardInterrupt:
-            print('shutting down')
-            server.close()
-            return
-
-
-if __name__ == '__main__':
-    html_server()
-</code></pre>
-<p>HTML код страницы: </p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;Website with one pic&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h1 style="font-family: 'Andale Mono'; color: cadetblue"&gt;Website with one pic&lt;/h1&gt;
-&lt;img src="https://avatars.mds.yandex.net/i?id=568151e0d5905d2868192b4704db0039_l-5234784-images-thumbs&amp;n=13" style="padding-top: 20px"&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p>Ниже представлен результат работы кода: </p>
-<p><img alt="create-skills" src="../images/3.1.png" /></p>
-<p><img alt="create-skills" src="../images/3.2.png" /></p>
+<h1 id="_1">Долги по литкодам</h1>
+<p>Задача 1:</p>
+<p><img alt="" src="../images2/1.1.png" /></p>
+<p>Задача 2:</p>
+<p><img alt="" src="../images2/1.2.png" /></p>
+<p>Задача 3:</p>
+<p><img alt="" src="../images2/1.3.png" /></p>
+<p>Задача 4:</p>
+<p><img alt="" src="../images2/1.4.png" /></p>
+<p>Задача 5:</p>
+<p><img alt="" src="../images2/1.5.png" /></p>
+<p>Задача 6:</p>
+<p><img alt="" src="../images2/1.6.png" /></p>
+<p>Задача 7:</p>
+<p><img alt="" src="../images2/1.7.png" /></p>
 
 
 
